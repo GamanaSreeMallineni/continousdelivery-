@@ -14,47 +14,47 @@ pool:
   vmImage: 'ubuntu-latest'
 
 
-  strategy:
+strategy:
 
 
-    matrix:
+  matrix:
 
 
-        Python27:
+    Python27:
 
 
-              python.version: '2.7'
-
-
-
-              steps:
-
-
-              - task: UsePythonVersion@0
-
-
-                inputs:
-
-
-                    versionSpec: '$(python.version)'
-
-
-                      displayName: 'Use Python $(python.version)'
-
-
-                      - script: python "add.py"
+      python.version: '2.7'
 
 
 
-                      - task: PythonScript@0
+steps:
 
 
-                        inputs:
+- task: UsePythonVersion@0
 
 
-                            scriptSource: 'inline'
+  inputs:
 
 
-                                script: |
-                                      print('AZURE PIPELINE')
-                                            print('CONTINUOUS INTEGRATION & CONTINUOUS DEPLOYMENT')
+    versionSpec: '$(python.version)'
+
+
+  displayName: 'Use Python $(python.version)'
+
+
+- script: python "add.py"
+
+
+
+- task: PythonScript@0
+
+
+  inputs:
+
+
+    scriptSource: 'inline'
+
+
+    script: |
+      print('AZURE PIPELINE')
+      print('CONTINUOUS INTEGRATION & CONTINUOUS DEPLOYMENT')
